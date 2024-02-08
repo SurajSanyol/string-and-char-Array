@@ -1,0 +1,35 @@
+class Solution {
+public:
+    int findMinDifference(vector<string>& timePoints) {
+
+    vector<int>minutes;
+    //step:1
+ // convert into the integer from string
+      for (int i=0;i<timePoints.size();i++)
+      {
+        string  currString = timePoints[i];
+        int hour =stoi(currString.substr(0,2));
+        int minute= stoi(currString.substr(3,2));
+        int TotalMinutes = hour*60+ minute;
+        minutes.push_back(TotalMinutes);
+      }
+     //step:2
+     //sort the int vector for reduce the compare between the element because we know the if we need minimum diff ,if we sort then the element goes to the nearest element and we don't need more compare 
+      sort(minutes.begin(),minutes.end());
+
+      //step:3 ==>> calculate diff and find minimum difference 
+      int mini = INT_MAX;
+       int n=minutes.size();
+       for(int i=0;i<n-1;i++)
+       {
+          int diff = minutes[i+1]-minutes[i];
+          mini = min(mini,diff);
+       }
+ 
+ //this is the last diff 
+       int lastdiff= (minutes[0]+1440)-minutes[n-1];
+       mini=min(mini,lastdiff);
+      
+        return mini;
+    }
+};
