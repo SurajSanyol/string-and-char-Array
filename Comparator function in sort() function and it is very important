@@ -1,0 +1,35 @@
+#include <iostream>
+#include<algorithm>
+#include<cstring>
+using namespace std;
+
+//this is the custom comparator and it returns a bool value
+bool comparator( char  first, char  second){
+  
+  return second>first;
+
+}
+
+int main() {
+  cout << "Hello world!" << endl;
+   string str1 = "suraj";
+   cout<<"this is normal print of string : "<<str1<<endl;
+   sort(str1.begin(),str1.end());
+   cout<<"This is print the sorted string: ";
+   cout<<str1;
+
+   // we are using the custom comparator
+   cout<<endl;
+   sort(str1.begin(),str1.end(),comparator);
+   cout<<"This is print the sorted string  using comparator function: ";
+   cout<<str1;
+
+   cout<<endl;
+
+    //we can also use the greater() function this function print the value in decreasing order
+
+    sort(str1.begin(),str1.end(),greater());
+    cout<<"This is printing string using the built-in function that  prints the string in decreasing order: "<<str1;
+     
+  return 0;
+}
