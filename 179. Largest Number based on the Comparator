@@ -1,0 +1,38 @@
+class Solution {
+           struct comp {
+
+
+                        bool operator()(int N1,int  N2)
+            {
+                
+                string comb1 = to_string(N1) + to_string(N2);
+                string comb2 = to_string(N2) + to_string(N1);
+                return comb1 > comb2;
+
+                // return ((to_string(N1)+to_string(N2))>(to_string(N1)+to_string(N2)));
+            }
+
+
+
+           }comparetor;
+            
+   
+
+public:
+
+    string largestNumber(vector<int>& nums) {
+        
+          string  largestNum="";
+          sort(nums.begin(),nums.end(),comparetor);
+          for(auto num:nums)
+          {
+              largestNum=largestNum+to_string(num);
+          }
+          //here the catch ,no any number start from zero becase we are searching highest number 
+          if (largestNum[0] == '0') {
+            return "0";
+        }
+
+          return largestNum;
+    }
+};
